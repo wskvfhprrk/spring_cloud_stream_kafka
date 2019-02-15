@@ -1,3 +1,4 @@
+
 spring:
   application:
     name: shop-server
@@ -20,5 +21,10 @@ spring:
         order_input:
           destination: order_msg
           group: order
+        order_back_input:
+          destination: order_back
+          group: orderback
         order_output:
           destination: order_msg
+        order_back_output:
+          destination: order_back

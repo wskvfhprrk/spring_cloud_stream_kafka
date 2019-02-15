@@ -17,6 +17,9 @@ public interface OrderStream {
      */
     String ORDER_INPUT = "order_input";
 
+    String ORDER_BACK_INPUT = "order_back_input";
+    String ORDER_BACK_OUTPUT = "order_back_output";
+
     /**
      * 发消息的通道
      *
@@ -24,6 +27,10 @@ public interface OrderStream {
      */
     @Output(ORDER_OUTPUT)
     MessageChannel sendShopMessage();
+
+    //@SendTo时可以不写返回的@Output
+//    @Output(ORDER_BACK_OUTPUT)
+//    MessageChannel orderBackOutput();
 
     /**
      * 收消息的通道
@@ -33,5 +40,11 @@ public interface OrderStream {
     @Input(ORDER_INPUT)
     SubscribableChannel recieveShopMessage();
 
-
+    /**
+     * 接收到返回值
+     *
+     * @return
+     */
+    @Input(ORDER_BACK_INPUT)
+    SubscribableChannel recieveBackMessage();
 }
