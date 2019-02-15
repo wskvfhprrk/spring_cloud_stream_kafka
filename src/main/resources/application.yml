@@ -9,7 +9,7 @@ spring:
         consumer:
         #来自KafkaBinderConfigurationProperties
         binder:
-          brokers: 192.168.166.182:9092
+          brokers: 192.168.166.180:9092
           configuration:
             auto:
               offset:
@@ -20,6 +20,9 @@ spring:
         shop_input: #ShopChannel里Input和Output的值
           destination: shop_msg #目标主题
           group: shop  #多实例时一定要加group
+          consumer:
+            maxAttempts: 1  #默认3次，1表示禁错误重示
+            backOffInitialInterval: 1000  #重试时的回退初始间隔时间
         shop_output:
           destination: shop_msg
         order_input:
