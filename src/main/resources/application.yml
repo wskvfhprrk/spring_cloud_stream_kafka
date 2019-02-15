@@ -10,8 +10,6 @@ spring:
         #来自KafkaBinderConfigurationProperties
         binder:
           brokers: 192.168.166.182:9092
-          #如果需要传递自定义header信息，需要在此处声明，不然自定义消息头是不会出现在最终消息当中的
-          #          headers: myType
           configuration:
             auto:
               offset:
@@ -28,11 +26,3 @@ spring:
           destination: order_msg
         order_output:
           destination: order_msg
-#  kafka:
-#    bootstrap-servers: 192.168.166.182:9092 #kafka服务地址
-#    consumer:
-#      group-id: consumer
-#    producer:
-#      key-serializer: org.apache.kafka.common.serialization.ByteArraySerializer
-#      value-serializer: org.apache.kafka.common.serialization.ByteArraySerializer
-#      client-id: producer #此处不能加client-id，加上后两个消息队列会出问题
