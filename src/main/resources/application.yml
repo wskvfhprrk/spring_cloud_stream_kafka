@@ -10,11 +10,6 @@ spring:
         #来自KafkaBinderConfigurationProperties
         binder:
           brokers: 192.168.166.180:9092
-          configuration:
-            auto:
-              offset:
-                #可以设置原生kafka属性，比如设置新的消费组从最新的offset开始消费
-                reset: latest
       #配置自己定义的通道与哪个中间件交互
       bindings:
         shop_input: #ShopChannel里Input和Output的值
@@ -27,5 +22,6 @@ spring:
           destination: shop_msg
         order_input:
           destination: order_msg
+          group: order
         order_output:
           destination: order_msg
