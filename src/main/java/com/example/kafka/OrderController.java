@@ -9,21 +9,20 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-public class ShopService {
+public class OrderController {
 
     @Autowired
-    private ShopChannel shopChannel;
+    private OrderStream orderStream;
 
-    @GetMapping("/sendMsg")
+    @GetMapping("order/sendMsg")
     public String sendShopMessage(String content) {
-        System.out.println("sendMsg接收到消息");
-        boolean isSendSuccess = shopChannel.sendShopMessage().
+        boolean isSendSuccess = orderStream.sendShopMessage().
                 send(MessageBuilder.withPayload(content).build());
         return isSendSuccess ? "发送成功" : "发送失败";
     }
 
-    @StreamListener(ShopChannel.SHOP_INPUT)
+    @StreamListener(OrderStream.ORDER_INPUT)
     public void receive(Message<String> message) {
-        System.out.println(message.getPayload());
+        System.out.println("order监听到的消息===========" + message.getPayload());
     }
 }
