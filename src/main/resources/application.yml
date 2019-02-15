@@ -3,10 +3,7 @@ spring:
     name: shop-server
   cloud:
     stream:
-      #指定用kafka stream来作为默认消息中间件
-      default-binder: kafka
       kafka:
-        consumer:
         #来自KafkaBinderConfigurationProperties
         binder:
           brokers: 192.168.166.180:9092
